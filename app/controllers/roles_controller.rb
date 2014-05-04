@@ -7,7 +7,8 @@ class RolesController < ApplicationController
     # Your code goes here
     # Use the information after the slash in the URL to look up the role with the corresponding ID number
     # Store the role in the @role instance variable so the view can format it
-
-    # @role = ???
+    roleid = params[:id]
+    roleinfo = Role.find_by({:id => roleid})
+    @role = roleinfo
   end
 end
