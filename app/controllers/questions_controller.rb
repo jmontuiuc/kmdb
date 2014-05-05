@@ -1,4 +1,6 @@
 class QuestionsController < ApplicationController
+  Movie_count = Hash.new
+
   def question_1
     # How many movies are in the database?
 
@@ -29,7 +31,11 @@ class QuestionsController < ApplicationController
     # Your Ruby goes here.
     # You'll probably have to use both ActiveRecord query methods as well as some plain old Ruby logic.
 
-    # @most_number_of_movies_by_a_single_director =
+    Movie.each do |a|
+      counts[a] += 1
+    end
+
+    @most_number_of_movies_by_a_single_director = Movie_count.sort.first
   end
 
   def question_5
