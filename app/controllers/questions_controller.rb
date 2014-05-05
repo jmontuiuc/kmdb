@@ -7,7 +7,9 @@ class QuestionsController < ApplicationController
   end
 
   Actor_roles = Role.where({ :actor_id => Actor.first.id }).select(:movie_id)
-  Actor_movie = Movie.where(:id => Actor_roles)
+  Actor_movie = Movie.where({:id => Actor_roles})
+
+
 
   def question_1
     # How many movies are in the database?
@@ -47,6 +49,6 @@ class QuestionsController < ApplicationController
     # Your Ruby goes here.
     # You'll probably have to use both ActiveRecord query methods as well as some plain old Ruby logic.
 
-    @most_recent_movie_for_first_actor = Active_movie
+    @most_recent_movie_for_first_actor = Actor_movie.order("year DESC").first.title
   end
 end
